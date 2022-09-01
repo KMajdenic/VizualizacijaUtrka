@@ -1,0 +1,101 @@
+@font-face {
+    font-family: "BebasNeue";
+    src: url(/BebasNeue-Regular.ttf);
+}
+
+h1 {
+    text-align: center;
+    font-size: 4rem;
+    background-color: #e6e6e6;
+    border-radius: 20px;
+    width: 50%;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    font-size: 25px
+}
+
+body {
+    background-color: lightslategray;
+    font-family: "BebasNeue";
+}
+
+#track {
+    display: block;
+    float: left;
+    width: 50%;
+    padding: 20px;
+}
+
+#standings {
+    margin-right: 10%;
+    float: right;
+    padding: 20px;
+}
+
+#standings table,
+td,
+th {
+    padding: 15px;
+    background-color: aliceblue;
+    stroke: black;
+    font-size: x-large;
+    text-align: center;
+}
+
+#standings table {
+    border-collapse: collapse;
+    border-radius: 20px;
+    font-family: "BebasNeue";
+    box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#standings th {
+    background-color: #008CBA;
+    color: white;
+}
+
+.button-toolbar {
+    margin: 5px auto;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.button-toolbar button {
+    background-color: aliceblue;
+    margin-right: 20px;
+    padding: 10px;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: 2px solid #555555;
+    font-family: "BebasNeue";
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.button-toolbar button:hover {
+    background-color: #555555;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#startBtn {
+    background-color: aliceblue;
+    margin: 1rem auto;
+    padding: 10px 24px;
+    text-align: center;
+    width: inherit;
+    display: block;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: 2px solid #008CBA;
+    font-family: "BebasNeue";
+}
+
+#startBtn:hover {
+    background-color: #008CBA;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
