@@ -2,9 +2,9 @@ var path1, path2, path3, data;
 var dataArray;
 var labels = ['Rezultat', 'Natjecatelj', 'Država', 'Vrijeme'];
 
-
 window.onload = (event) => {
-  replayRaceButton = document.getElementById("startBtn").addEventListener("click", animate);
+  replayRaceButton = document.getElementById("startBtn")
+    .addEventListener("click", animate);
   getRaceButtons = document.querySelectorAll(".button-pick-race");
   getRaceButtons.forEach(button => {
     button.addEventListener('click', loadRace);
@@ -16,6 +16,7 @@ window.onload = (event) => {
 function loadRace(event) {
   event.preventDefault();
   loadRaceData(event.target.value);
+
 }
 
 function loadRaceData(race) {
@@ -29,12 +30,11 @@ function loadRaceData(race) {
 }
 
 function displayStandings() {
-  
+
   var table = d3.select("#standings").append("table");
 
   thead = table.append("thead");
   tbody = table.append("tbody");
-
 
   thead.append("tr")
     .selectAll("th")
@@ -43,7 +43,7 @@ function displayStandings() {
     .append("th")
     .text(function (d) {
       return d;
-    }) ;
+    });
 
   var rows = tbody.selectAll("tr")
     .data(dataArray)
@@ -60,12 +60,13 @@ function displayStandings() {
 }
 
 function drawTrack() {
+  d3.select("#track").selectAll("*").remove();
+
   var svg = d3
     .select("#track")
     .append("svg")
     .attr("width", 750)
-    .attr("height", 600)
-    .style("background ", "green");
+    .attr("height", 600);
 
   d3.select("svg")
     .append("path")
@@ -155,12 +156,16 @@ function setupTrack() {
 
 function drawRace() {
 
-  if(dataArray===undefined)
-  {
+
+  if (dataArray === undefined) {
     alert("Utrka nije odabrana");
     return;
   }
   const length = path2.node().getTotalLength();
+
+  var tempArray = [dataArray[0], dataArray[1], dataArray[2]];
+  shuffle(tempArray);
+  console.log(tempArray)
 
   path1.attr("stroke", "yellow")
     .attr("stroke-width", "10px")
@@ -169,7 +174,7 @@ function drawRace() {
     .transition()
     .ease(d3.easeLinear)
     .attr("stroke-dashoffset", 0)
-    .duration(dataArray[0].time * 5000);
+    .duration(tempArray[0].time * 5000);
 
   path2.attr("stroke", "blue")
     .attr("stroke-width", "10px")
@@ -178,7 +183,7 @@ function drawRace() {
     .transition()
     .ease(d3.easeLinear)
     .attr("stroke-dashoffset", 0)
-    .duration(dataArray[1].time * 5000);
+    .duration(tempArray[1].time * 5000);
 
   path3.attr("stroke", "green")
     .attr("stroke-width", "10px")
@@ -187,7 +192,7 @@ function drawRace() {
     .transition()
     .ease(d3.easeLinear)
     .attr("stroke-dashoffset", 0)
-    .duration(dataArray[2].time * 5000);
+    .duration(tempArray[2].time * 5000);
 };
 
 function animate() {
@@ -195,6 +200,19 @@ function animate() {
   setupTrack();
   drawRace();
 };
+
+function shuffle(array) {
+  let currentIndex = array.length, randomIndex;
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
 
 
 
